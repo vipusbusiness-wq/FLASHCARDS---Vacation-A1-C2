@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holiday Flashcards - Mr. Prats</title>
+<style>
+body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; display:flex; justify-content:center; align-items:center; height:100vh; }
+.container { width: 350px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center; }
+img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+.question { font-size: 18px; margin-bottom: 15px; }
+.choices button { display:block; width:100%; margin:5px 0; padding:10px; font-size:16px; cursor:pointer; border-radius:5px; border:1px solid #ccc; background:#eee; }
+footer { font-size: 12px; margin-top: 15px; color:#888; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="https://via.placeholder.com/350x150?text=Beach" alt="Beach">
+  <div class="question">Where do you like to <b>head off</b> on holiday? (Para onde você gosta de ir nas férias?)</div>
+  <div class="choices">
+    <button>I head off to the beach.</button>
+    <button>I stay at home.</button>
+    <button>I visit my family.</button>
+  </div>
+  <footer>© 2025 Vinícius Prats Oliveira – Mr. Prats. All rights reserved.</footer>
+</div>
+
+<script>
+const flashcards = [
+{
+  img:"https://via.placeholder.com/350x150?text=Beach",
+  question:"Where do you like to <b>head off</b> on holiday? (Para onde você gosta de ir nas férias?)",
+  choices:["I head off to the beach.","I stay at home.","I visit my family."]
+},
+{
+  img:"https://via.placeholder.com/350x150?text=Luggage",
+  question:"What do you usually <b>pack up</b> before a trip? (O que você normalmente arruma na mala antes de viajar?)",
+  choices:["I pack up my clothes.","I pack up books.","I pack up toys."]
+},
+{
+  img:"https://via.placeholder.com/350x150?text=Relax",
+  question:"How do you usually <b>chill out</b> on your holidays? (Como você normalmente relaxa nas férias?)",
+  choices:["I chill out in a hammock.","I work all day.","I stay in the hotel room."]
+},
+{
+  img:"https://via.placeholder.com/350x150?text=Airport",
+  question:"Tell me about a time you had to <b>deal with</b> a problem while away. (Conte-me sobre uma vez que você teve que lidar com um problema enquanto estava fora.)",
+  choices:["I had to deal with lost luggage.","My flight was delayed.","My hotel was full."]
+},
+{
+  img:"https://via.placeholder.com/350x150?text=VideoCall",
+  question:"How do you usually <b>catch up with</b> friends or family during your holidays? (Como você normalmente coloca a conversa em dia com amigos ou família durante as férias?)",
+  choices:["I catch up with them online.","I meet them in person.","I text them."]
+},
+{
+  img:"https://via.placeholder.com/350x150?text=TripComparison",
+  question:"Compare two holidays: one that <b>lived up to</b> your expectations and one that <b>let you down</b>. (Compare duas férias: uma que correspondeu às suas expectativas e outra que te decepcionou.)",
+  choices:["The good trip lived up to my expectations.","The bad trip let me down.","Both trips were different."]
+},
+// Aqui você pode adicionar os outros 15 flashcards (A1→C2)
+];
+
+let current = 0;
+
+function showCard(idx){
+  const card = flashcards[idx];
+  document.querySelector('.container img').src = card.img;
+  document.querySelector('.container .question').innerHTML = card.question;
+  const buttons = document.querySelectorAll('.choices button');
+  buttons.forEach((btn,i)=> btn.innerText = card.choices[i]);
+}
+
+document.querySelectorAll('.choices button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    current++;
+    if(current>=flashcards.length) current=0;
+    showCard(current);
+  });
+});
+
+showCard(current);
+</script>
+
+</body>
+</html>
